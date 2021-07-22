@@ -111,6 +111,7 @@
                 $("#chat").append("<li><p>대화방이 종료되었습니다</p><hr></li>");
                 $("#sendMessage").hide(); $("#closing").hide();
                 $("#ramdomChatFindBtn").show();
+                $("#select-box").show();
                 
                 socket.emit("ChatClosing",{roomName:roomName});
             });
@@ -144,14 +145,19 @@
         }
     </script>
 </head>
-<body>
+<body style="background-color: #CEE2FA">
     <div class="container">
-        <div class="jumbotron">
-            <h1>경북대학교 컴퓨터학부 랜덤채팅</h1>
+        <div class="jumbotron" style="background-color: #FFFFEF">
+            
+            <h1>경북대학교 컴퓨터학부 랜덤채팅</h1><br>
             <p>
-                대화방을 찾고 있는 상대방과 1대1로 채팅을 할 수 있는 사이트 입니다.<br>
-                닉네임을 입력하시고 확인버튼을 누르시면<br>
-                상대와 대화를 할 수 있는 채팅창을 활성화 하실 수 있습니다.
+                <b>경북대학교 컴퓨터학부 학생들을 위한 랜덤채팅 사이트입니다.</b><br>
+                <div style='font-size:small; line-height:200%' >
+                닉네임과 학년을 입력한 후 확인버튼을 누르면 채팅방이 활성화됩니다.<br>
+                채팅을 원하는 학년을 선택한 후 시작버튼을 누르면 채팅이 시작됩니다.<br>
+                동학년과의 채팅을 통해 친구를 사귈 기회를 얻으세요!<br>
+                선후배와의 채팅을 통해 대인관계를 넓힐 기회를 잡으세요!<br>
+                </div>
             </p>
         </div>
     </div>
@@ -168,8 +174,8 @@
             <div class="panel-heading">
                 <h1 class="panel-title">채팅창<span class="pull-right">접속자 : <span class="clientsCount"></span>명</span></h1>
             </div>
-            <div class="panel-body">
-                <ul class="chat list-unstyled" id="chat" style="height: 500px; overflow: auto;">
+            <div class="panel-body" >
+                <ul class="chat list-unstyled" id="chat" style="height: 500px; overflow: auto; ">
                 </ul>
             </div>
             <div class="panel-footer">
