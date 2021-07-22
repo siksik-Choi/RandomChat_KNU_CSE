@@ -7,7 +7,7 @@ const notFinding = 2;
 const chating = 3;
  
 var clients = []; //사용자를 저장/관리 하는 배열. 이 배열의 길이가 사용자(채팅 접속자)의 수.
- 
+
 var server = http.createServer(function(request,response){
  
     //해당파일의 데이터를 읽고, 읽은 데이터를 클라이언트로 응답해줌.
@@ -41,11 +41,13 @@ io.sockets.on("connection",function(socket){
  
         clients.push({
             name:data.name, //사용자의 닉네임
+            grade:data.gr,
             client:socket, //사용자의 소켓
             roomName:"", //사용자가 들어가 있는 방 이름
             status:notFinding //사용자의 상태. notFinding(대화상대를 찾고있지 않는)상태로 초기화 시킴.
         });
         socket.name = data.name;
+        socket.grade = data.gr;
         socket.emit("nickNameCheckComplete");
     })
  
