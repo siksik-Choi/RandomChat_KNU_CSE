@@ -55,35 +55,17 @@
                 $("#chatBox").removeClass("chatDisabled").addClass("chatabled");
                 $("#nickNameForm").css("display","none");
                 $("#sendMessage").hide(); $("#closing").hide();
-                $("#randomChatwith1").show();
-                $("#randomChatwith2").show();
-                $("#randomChatwith3").show();
-                $("#randomChatwith4").show();
-                
+                $("#ramdomChatFindBtn").show();
                 clientCounting();
             });
  
-            
-            $("#randomChatwith1").on("click",function(){
+            $("#ramdomChatFindBtn").on("click",function(){
                 $("#chat").html("");
-                socket.emit("randomChatFindClick1",{name:nickName,grade:Grade});
-                Want=1;
+                var selectValue = $("select[name='select-grade']").val();
+                Want = selectValue;
+                socket.emit("randomChatFindClick",{name:nickName, grade:Grade,want:Want});
             })
-            $("#randomChatwith2").on("click",function(){
-                $("#chat").html("");
-                socket.emit("randomChatFindClick2",{name:nickName,grade:Grade});
-                Want=2;
-            })
-            $("#randomChatwith3").on("click",function(){
-                $("#chat").html("");
-                socket.emit("randomChatFindClick3",{name:nickName,grade:Grade});
-                Want=3;
-            })
-            $("#randomChatwith4").on("click",function(){
-                $("#chat").html("");
-                socket.emit("randomChatFindClick4",{name:nickName,grade:Grade});
-                Want=4;
-            })
+
             socket.on("randomChatFindClickComplete",function(){
                 $("#chat").html("").append("<li>대화상대를 찾고있습니다...</li>");
                 startFinding(); //실제로 대화상대찾기 시작
@@ -93,10 +75,7 @@
                 $("#chat").html("").append("<li><p>대화방에 입장했습니다!!</p><hr></li>");
                 $("#sendMessage").show(); 
                 $("#closing").show();
-                $("#randomChatwith1").hide();
-                $("#randomChatwith2").hide();
-                $("#randomChatwith3").hide();
-                $("#randomChatwith4").hide();
+                $("#ramdomChatFindBtn").hide();
                 
                 roomName = data;
             });
@@ -130,10 +109,7 @@
             socket.on("chatEnd",function(data){
                 $("#chat").append("<li><p>대화방이 종료되었습니다</p><hr></li>");
                 $("#sendMessage").hide(); $("#closing").hide();
-                $("#randomChatwith1").show();
-                $("#randomChatwith2").show();
-                $("#randomChatwith3").show();
-                $("#randomChatwith4").show();
+                $("#ramdomChatFindBtn").show();
                 
                 socket.emit("ChatClosing",{roomName:roomName});
             });
@@ -203,10 +179,15 @@
                     <div class="col-xs-3">
                         <button class="btn btn-primary" id="sendMessage">보내기</button>
                         <button class="btn btn-danger" id="closing">나가기</button>
-                        <button class="btn btn-warning" id="randomChatwith1">1학년이랑 채팅</button>
-                        <button class="btn btn-warning" id="randomChatwith2">2학년이랑 채팅</button>
-                        <button class="btn btn-warning" id="randomChatwith3">3학년이랑 채팅</button>
-                        <button class="btn btn-warning" id="randomChatwith4">4학년이랑 채팅</button>
+                        <button class="btn btn-warning" id="ramdomChatFindBtn">랜덤채팅시작</button>
+                        <select name="select-grade">
+                            <option value="">학년 선택</option>
+                            <option value=1>1학년</option>
+                            <option value=2>2학년</option>
+                            <option value=3>3학년</option>
+                            <option value=4>4학년</option>
+                        </select>
+
                     </div>
                 </div>
             </div>

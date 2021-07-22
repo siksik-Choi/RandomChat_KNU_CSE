@@ -52,49 +52,18 @@ io.sockets.on("connection",function(socket){
         socket.emit("nickNameCheckComplete");
     })
  
-    socket.on("randomChatFindClick1",function(data){
+    socket.on("randomChatFindClick",function(data){
         for(var a = 0; a<clients.length; a++){
             if(clients[a].name == data.name){
                 //해당사용자의 상태를 변경. 대화상대를 찾고있는(finding)상태로 변경
                 clients[a].status = finding;
-                clients[a].want=1;
+                clients[a].want=data.want;
                 socket.emit("randomChatFindClickComplete");
                 return ;
             }
         }
     });
 
-    socket.on("randomChatFindClick2",function(data){
-        for(var a = 0; a<clients.length; a++){
-            if(clients[a].name == data.name){
-                //해당사용자의 상태를 변경. 대화상대를 찾고있는(finding)상태로 변경
-                clients[a].status = finding;
-                clients[a].want=2;
-                socket.emit("randomChatFindClickComplete");
-                return ;
-            }
-        }
-    });socket.on("randomChatFindClick3",function(data){
-        for(var a = 0; a<clients.length; a++){
-            if(clients[a].name == data.name){
-                //해당사용자의 상태를 변경. 대화상대를 찾고있는(finding)상태로 변경
-                clients[a].status = finding;
-                clients[a].want=3;
-                socket.emit("randomChatFindClickComplete");
-                return ;
-            }
-        }
-    });socket.on("randomChatFindClick4",function(data){
-        for(var a = 0; a<clients.length; a++){
-            if(clients[a].name == data.name){
-                //해당사용자의 상태를 변경. 대화상대를 찾고있는(finding)상태로 변경
-                clients[a].status = finding;
-                clients[a].want=4;
-                socket.emit("randomChatFindClickComplete");
-                return ;
-            }
-        }
-    });
     socket.on("randomChatFining", function(data){ //대화방을 찾고 있는 상대와 같은 방으로 이동시킨다.
         for(var a =0; a<clients.length; a++){
             if(clients[a].status == finding){
