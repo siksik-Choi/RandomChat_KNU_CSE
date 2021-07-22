@@ -16,10 +16,17 @@
 > 컴퓨터학부에서 사용될 뿐만 아니라, 타 학과에서도 사용할 수 있는 플랫폼임
 ## 실행 화면
 #### 시작화면
-<img src="https://user-images.githubusercontent.com/72001106/126690280-3ea81176-4670-482e-851c-02691b7155ce.png" width="500px" height="300px"></img><br/>    
+<img src="https://user-images.githubusercontent.com/72001106/126690280-3ea81176-4670-482e-851c-02691b7155ce.png"></img><br/>    
 #### 이름과 학년 선택 후, 확인을 누름
-<img src="https://user-images.githubusercontent.com/72001106/126690418-c8c2b1e1-2173-41ac-905c-19de1b481ad1.png" width="500px" height="300px"></img><br/>
-
+<img src="https://user-images.githubusercontent.com/72001106/126690418-c8c2b1e1-2173-41ac-905c-19de1b481ad1.png"></img><br/>
+#### 사용자1 문정원(2학년), 사용자2 정다혜(3학년)
+<img src="https://user-images.githubusercontent.com/72001106/126691955-1205427e-e5fc-4f82-82df-6fef4f070081.png"></img><br/>
+#### 사용자1과 사용자2가 서로 매칭된 경우
+<img src="https://user-images.githubusercontent.com/72001106/126692592-1b089975-629a-4584-ad28-81e1d31a292c.png"></img><br/>
+#### 사용자1과 사용자2가 대화
+![image](https://user-images.githubusercontent.com/72001106/126692894-c654ebf7-d068-490a-a032-32a49d23a49d.png)
+#### 사용자1과 사용자2가 대화 종료
+![image](https://user-images.githubusercontent.com/72001106/126693063-d1b3c19e-bd9c-4fb9-a50d-f2cff56fdc06.png)
 
 
 ## 참고소스
