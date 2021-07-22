@@ -76,6 +76,7 @@
                 $("#sendMessage").show(); 
                 $("#closing").show();
                 $("#ramdomChatFindBtn").hide();
+                $("#select-box").hide();
                 
                 roomName = data;
             });
@@ -180,7 +181,7 @@
                         <button class="btn btn-primary" id="sendMessage">보내기</button>
                         <button class="btn btn-danger" id="closing">나가기</button>
                         <button class="btn btn-warning" id="ramdomChatFindBtn">랜덤채팅시작</button>
-                        <select name="select-grade">
+                        <select name="select-grade" id="select-box">
                             <option value="">학년 선택</option>
                             <option value=1>1학년</option>
                             <option value=2>2학년</option>
