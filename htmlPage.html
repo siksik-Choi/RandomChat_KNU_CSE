@@ -31,14 +31,15 @@
         window.onload = function(){
             var nickName = "";
             var roomName = "";
+            var graDe = "";
             var handle = null;
             var socket = io.connect(); //웹소켓서버에 연결한다.
  
             $("#nicknameBtn").on("click",function(){
                 var nicknameValue = $("input[name='nickname']").val();
-                var gradeValue = $("input[g='grade']").val();
+                var gradeValue = $("input[name='grade']").val();
                 nickName = nicknameValue;
-                Grade = gradeValue;
+                graDe = gradeValue;
                 socket.emit("nickNameCheck",{name:nicknameValue, gr:gradeValue});
             });
             socket.on("nullError",function(result){
@@ -58,7 +59,7 @@
             
             $("#ramdomChatFindBtn").on("click",function(){
                 $("#chat").html("");
-                socket.emit("randomChatFindClick",{name:nickName});
+                socket.emit("randomChatFindClick",{name:nickName, gr:graDe});
             })
             socket.on("randomChatFindClickComplete",function(){
                 $("#chat").html("").append("<li>대화상대를 찾고있습니다...</li>");
@@ -82,7 +83,7 @@
  
                 var str = "";
                 str += "<li>";
-                str += "<strong>"+nickName+"</strong>";
+                str += "<strong>"+nickName+"("+graDe+")"+"</strong>";
                 str += "<p>"+content+"</p>";
                 str += "<hr>";
                 str += "</li>";
@@ -116,7 +117,7 @@
             function startFinding(){
                 if(handle == null){
                     handle = setInterval(function(){
-                        socket.emit("randomChatFining",{name:nickName});
+                        socket.emit("randomChatFining",{name:nickName, gr:graDe});
                     },500);
                 }
             }
@@ -148,7 +149,7 @@
     <div class="container" style="margin-top: 20px;" id="nickNameForm">
         <div class="form-group form-inline">
             <input type="text" name="nickname" class="form-control" maxlength="100" id="nickname" placeholder="닉네임을 입력하세요..">
-            <input type="number" name="grade" class="form-control" maxlength="100" id="grade" placeholder="학년을 입력하세요..">
+            <input type="text" name="grade" class="form-control" maxlength="100" id="grade" placeholder="학년을 입력하세요..">
             <button class="btn btn-primary" id="nicknameBtn">확인</button>
         </div>
     </div>
